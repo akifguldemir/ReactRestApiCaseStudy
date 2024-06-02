@@ -7,11 +7,13 @@ const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.post('http://your-api-url/login', { email, password });
-      const { token } = response.data;
-      localStorage.setItem('token', token);
+      const response = await axios.post('http://localhost:8080/api/login', { email, password });
+      console.log(response);
+      // const { token } = response.data;
+      // localStorage.setItem('token', token);
       onLogin();
     } catch (error) {
       console.error('Login error:', error);
