@@ -11,27 +11,24 @@ const Login = ({ onLogin }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:8080/api/login', { email, password });
-      console.log(response);
-      // const { token } = response.data;
-      // localStorage.setItem('token', token);
-      onLogin();
-    } catch (error) {
-      if (error.response) {
+      const response = await axios.post('http://localhost:8080/api/login', { email, password }).then(function (response) {
+        // const { token } = response.data;
+        // localStorage.setItem('token', token);
+        onLogin();
+      })
+      .catch(function (error) {
         const errorMessage = error.response.data.message
-            toast.error(errorMessage, {
-              position: "top-right",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-            });
-      }
-    }
+        toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      });
   };
 
   return (
