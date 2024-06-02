@@ -11,7 +11,7 @@ const Login = ({ onLogin }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-      const response = await axios.post('http://localhost:8080/api/login', { email, password }).then(function (response) {
+      await axios.post('http://localhost:8080/api/login', { email, password }).then(function (response) {
         // const { token } = response.data;
         // localStorage.setItem('token', token);
         onLogin();
