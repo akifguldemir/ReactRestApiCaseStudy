@@ -56,6 +56,7 @@ const Dashboard = () => {
 
   return (
     <div className="container">
+      <h2>Posts</h2>
       <table className="table table-bordered">
       <thead>
         <tr>
